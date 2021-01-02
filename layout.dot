@@ -54,8 +54,6 @@ digraph rhymera {
 
             mn02 -> rh01;
             rh01 -> rh02;
-            rh02 -> rb01;
-            rh03 -> rb02;
             rh04 -> mn07;
         }
 
@@ -69,8 +67,6 @@ digraph rhymera {
 
             mn06 -> po01;
             po01 -> po02;
-            po02 -> rb01;
-            po03 -> rb02;
             po04 -> mn07;
         }
 
@@ -84,8 +80,6 @@ digraph rhymera {
 
             mn03 -> pr01;
             pr01 -> pr02;
-            pr02 -> ol01;
-            pr03 -> ol02;
             pr04 -> mn07;
         }
         
@@ -99,8 +93,6 @@ digraph rhymera {
 
             mn04 -> su01;
             su01 -> su02;
-            su02 -> ol01;
-            su03 -> ol02;
             su04 -> mn07;
         }
 
@@ -114,8 +106,6 @@ digraph rhymera {
 
             mn05 -> re01;
             re01 -> re02;
-            re02 -> ol01;
-            re03 -> ol02;
             re04 -> mn07;
         }
 
@@ -152,6 +142,13 @@ digraph rhymera {
 
         ol01 -> re02;
         ol03 -> re04;
+
+            pr02 -> ol01;
+            pr03 -> ol02;
+            su02 -> ol01;
+            su03 -> ol02;
+            re02 -> ol01;
+            re03 -> ol02;
     }
 
     subgraph cluster_rb {
@@ -168,5 +165,11 @@ digraph rhymera {
 
         rb01 -> po02;
         rb03 -> po04;
+
+            rh02 -> rb01;
+            rh03 -> rb02;
+            po02 -> rb01;
+            po03 -> rb02;
+
     }
 }
