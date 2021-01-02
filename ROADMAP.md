@@ -15,11 +15,11 @@ or "quit"
 
 then, choose
 1) rhyme
-2) alliterate[1]
-3) related
-4) portmanteaus
+2) prefix
+3) suffix
+4) related
+5) portmanteaus
 
-[1] asks for a number of letters
 get a list of results back (possibly limit or paginate?)
 
 select result or return to home
@@ -31,16 +31,32 @@ select result or return to home
 
 ### Menu
 - handles choices, relies on `CLI::UI`
-- send to clipboard
+- send to clipboard with `Clipboard`
 
-### Lister
+### List
 - formats data for interacting with
+- possibly paginates?
 
-### Rhymer
-- pulls from RhymeBrain
+### Rhymes < List
+- determines nature of query, converts relevant json object to conform to list
+
+### Prefix < List
+- converts relevant scrape data to list, formats relevant query
+
+### Suffix < List
+- converts relevant scrape data to list, formats relevant query
+
+### Related < List
+- converts relevant scrape data to list, formats relevant query
+
+### Portmanteau < List
+- determines nature of query, converts relevant json object to list
 
 ### OneLook
-- calls onelook api
+- calls onelook api, returns json object
 
 ### RhymeBrain
-- scrapes rhymebrain page, returns
+- uses input to structure api, scrapes rhymebrain results page, returns word list
+
+files:
+
