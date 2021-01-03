@@ -2,7 +2,6 @@ RHYMERA
 ===
  for api/scraper calls
 [RhymeBrain](https://rhymebrain.com) for rhymes and portmanteaus
-[OneLook](https://onelook.com) for thesaurus and aliteration
 
 [cli-ui](https://github.com/shopify/cli-ui) to handsome up the ui
 [clipboard](https://github.com/janlelis/clipboard) to copy result to clipboard
@@ -15,51 +14,58 @@ or "quit"
 
 then, choose
 1) rhyme
-2) prefix
-3) suffix
-4) related
-5) portmanteaus
+(type: getRhymes)
+2) portmanteaus
+(type: getPortmanteaus)
 
 get a list of results back (possibly limit or paginate?)
 
-select result or return to home
-1) copy to clipboard
-2) search this word
-3) search a new word
+
+detail view, common (module?)
+- copy to clipboard
+- search using word as query
+- search previous query
+- search a new query 
+- back to list
+
+detail view - rhyme
+word
+number of syllables
+
+detail view - portmanteau
+portmanteau (actually spelling[0])
+root word 1
+root word 2 (selectable with common menu)
+alternative (spelling[1] if spelling[1])
+ - selectable and switches with portmanteau name on selection (incl searchability)
 
 ## classes:
 
 ### Menu
 - handles choices, relies on `CLI::UI`
-- send to clipboard with `Clipboard`
-- creates and stores list object of previous queries
-    - this is my class method
+- send word to clipboard with `Clipboard`
+- displays `List` object as selectable menu
+    - also: search new word/previous search/search {other type}
+- selecting `Rhyme` or `Portmanteau` entry shows relevant details, option to search
 
 ### List
-- formats data for interacting with
-- extra layer of results in portmanteau data
-- possibly paginates?
+- init with type (rhyme or port) and query
+- has many `Rhyme`, `Portmanteau`
+- collects the prior for display from a rhymebrain call
+- class instance variable with prior queries!
 
-### Rhymes < List
-- determines nature of query, converts relevant json object to conform to list
+### Rhyme
+- contains each rhyme entry from json object
+- syllables
 
-### Prefix < List
-- converts relevant scrape data to list, formats relevant query
-
-### Suffix < List
-- converts relevant scrape data to list, formats relevant query
-
-### Related < List
-- converts relevant scrape data to list, formats relevant query
-
-### Portmanteau < List
-- determines nature of query, converts relevant json object to list
-
-### OneLook
-- calls onelook api, returns json object
+### Portmanteau
+- contains each portmanteau entry from json object
+- spelling (array of one or two)
+- root 1
+- root 2
 
 ### RhymeBrain
-- uses input to structure api, scrapes rhymebrain results page, returns word list
+- uses input to structure api, scrapes rhymebrain results page, returns json
 
 files:
 
