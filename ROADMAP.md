@@ -32,9 +32,12 @@ select result or return to home
 ### Menu
 - handles choices, relies on `CLI::UI`
 - send to clipboard with `Clipboard`
+- creates and stores list object of previous queries
+    - this is my class method
 
 ### List
 - formats data for interacting with
+- extra layer of results in portmanteau data
 - possibly paginates?
 
 ### Rhymes < List

@@ -21,12 +21,18 @@ digraph rhymera {
         mn08 [label = "user quits program"];
         mn09 [label = "user runs query on selected word"];
         mn10 [label = "user copies word to clipboard"];
+        mn11 [label = "portmanteau view shows root words, alternative"]
+        mn12 [label = "track in previous queries"]
+        mn13 [label = "select choose previous query"]
+        mn14 [label = "select from list of previous queries"]
 
         mn01 -> mn02;
         mn01 -> mn03;
         mn01 -> mn04;
         mn01 -> mn05;
         mn01 -> mn06;
+        
+        mn01 -> mn12;
 
         mn09 -> mn02;
         mn09 -> mn03;
@@ -38,6 +44,11 @@ digraph rhymera {
         mn07 -> mn09;
         mn07 -> mn08;
         mn07 -> mn10;
+        mn07 -> mn11;
+
+        mn11 -> mn09;
+        mn11 -> mn08;
+        mn11 -> mn10;
     }
 
     subgraph cluster_li {
@@ -64,10 +75,12 @@ digraph rhymera {
             po02 [label = "create new RhymeBrain object w query"];
             po03 [label = "query RhymeBrain object into results"];
             po04 [label = "format results into list array from super"];
+            po05 [label = "exported object has alternative and root words"];
 
             mn06 -> po01;
             po01 -> po02;
-            po04 -> mn07;
+            po04 -> po04;
+            po05 -> mn07;
         }
 
         subgraph cluster_pr {
