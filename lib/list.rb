@@ -3,7 +3,7 @@ class List
   attr_reader :query, :type, :object
   attr_accessor :entries
 
-  @all = []
+  @all = {}
 
   class << self
     attr_accessor :all
@@ -13,10 +13,11 @@ class List
     @object = RhymeBrain.query(function: function, word: word)
     @query = word
     @type = function
-    @entries = []
+    @entries = {}
     build_correct_type
 
-    self.class.all << self
+    # add to all hash
+    self.class.all[@query] = self
   end
 
   def build_correct_type
@@ -30,15 +31,17 @@ class List
 
   def create_portmanteaus
     @object.each do |entry|
-      entries << Portmanteau.new(source: entry['source'],
-                                 combined: entry['combined'])
+      port = Portmanteau.new(source: entry['source'],
+                             combined: entry['combined'])
+      entries[port.word] = port
     end
   end
 
   def create_rhymes
     @object.each do |entry|
-      entries << Rhyme.new(word: entry['word'],
-                           syllables: entry['syllables'])
+      rhyme = Rhyme.new(word: entry['word'],
+                        syllables: entry['syllables'])
+      entries[rhyme.word] = rhyme
     end
   end
 end

@@ -41,6 +41,10 @@ alternative (spelling[1] if spelling[1])
 
 ## classes:
 
+### Rhymera
+- creates menu
+- do i make everything extend it so i can call it from other stuff?
+
 ### Menu
 - handles choices, relies on `CLI::UI`
 - send word to clipboard with `Clipboard`
