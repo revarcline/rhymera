@@ -5,14 +5,17 @@ require 'clipboard'
 class Menu
   attr_accessor :query, :type, :list, :result
 
-  self.prompt = CLI::UI::Prompt
-
   def new_word
     @query = prompt.ask('Enter your RhymeBrain query:')
     type = prompt.ask('Which type of results do you want?',
                       options: %w[Rhyme Portmanteau])
     @type = "get#{type}s"
     @list = List.new(function: @type, word: @query)
+    select_result
+  end
+
+  def prompt
+    CLI::UI::Prompt
   end
 
   def new_list; end

@@ -1,5 +1,5 @@
 class Portmanteau
-  attr_reader :source_one, :source_two, :combined_one, :combined_two
+  attr_reader :source_one, :source_two, :word, :alternative
 
   def initialize(source:, combined:)
     source_words = source.split(',')
