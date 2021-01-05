@@ -1,22 +1,12 @@
-require 'cli/ui'
-# dumb test idea
-class TestObject
-  attr_reader :number
+require 'tty-prompt'
+require_relative 'lib/rhymera'
+prompt = TTY::Prompt.new
+port_list = Rhymera::List.new(function: 'getPortmanteaus', word: 'fancy')
 
-  def initialize(number)
-    @number = number
-  end
-end
-object_array = []
-10.times { |num| object_array << TestObject.new(num) }
+prompt.yes?('is this working?')
 
-CLI::UI::Prompt.ask('what next?', options: (object_array.collect { |obj| obj.number.to_s }))
+prompt.select('Select a result for more info',
+              port_list.entries.map(&:word))
 
-require_relative 'lib/menu'
-require_relative 'lib/rhyme'
-require_relative 'lib/portmanteau'
-require_relative 'lib/rhymebrain'
-require_relative 'lib/list'
-
-search = Menu.new
-search.new_word
+prompt.select('Select a result for more info',
+              port_list.entries.map { |entry| { entry.word.to_s => entry } })

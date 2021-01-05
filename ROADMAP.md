@@ -2,9 +2,36 @@ RHYMERA
 ===
  for api/scraper calls
 [RhymeBrain](https://rhymebrain.com) for rhymes and portmanteaus
-
-[cli-ui](https://github.com/shopify/cli-ui) to handsome up the ui
 [clipboard](https://github.com/janlelis/clipboard) to copy result to clipboard
+
+HEY OK DITCHING CLI/UI BECAUSE THEN YOU WON'T NEED THE DAMN HASH
+like then you can just return objects
+as cool as interactivity is it's not what they're looking for
+
+make sure you go back to initializing list as array!
+
+please research how to
+a) take args from cli
+b) paginate (should be easy) (also, its own method)
+
+
+should probably review revision history of this document for blog post
+of note:
+initially wanted to add in scraper for OneLook but it was unscrapable (no js)
+tried building with cli-ui gem from shopify so i could get a nice interactive prompt
+however returning a string hobbled this - if i could understand the handlers better, maybe?
+
+this way i can generate my list by iterating through each object enumerable
+
+maybe switch to [TTY::Prompt](https://github.com/piotrmurach/tty-prompt)
+i can keep my objects as arrays (clean, no redundancy)
+and make my menus return the object value itself!
+should be able to do this as a block!
+
+ok! so blogpost about "picking the right depedencies"
+- shopify's looked pretty fresh, liked the vi-keys functionality
+- only returned string value though, meaning i would need to do some dumb iterations
+- tty-prompt allowed me to more easily pass a hash
 
 ## basic outline:
 
@@ -39,7 +66,7 @@ root word 2 (selectable with common menu)
 alternative (spelling[1] if spelling[1])
  - selectable and switches with portmanteau name on selection (incl searchability)
 
-## classes:
+## classes (and tests):
 
 ### Rhymera
 - creates menu
@@ -65,11 +92,10 @@ alternative (spelling[1] if spelling[1])
 ### Portmanteau
 - contains each portmanteau entry from json object
 - spelling (array of one or two)
-- root 1
-- root 2
+- source 1
+- source 2
+test:
+make sure it parses input correctly, and `:alternative` is conditional on original object
 
 ### RhymeBrain
 - uses input to structure api, scrapes rhymebrain results page, returns json
-
-files:
-

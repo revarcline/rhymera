@@ -30,8 +30,9 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
-  spec.add_dependency 'clipboard'
-  spec.add_dependency 'cli-ui'
+  spec.add_dependency 'clipboard', '~> 1.3'
+  spec.add_dependency 'rspec', '~> 3.9'
+  spec.add_dependency 'tty-prompt', '~> 0.23'
 
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html

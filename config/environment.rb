@@ -1,6 +1,0 @@
-require_relative '../lib/rhymera'
-require_relative '../lib/menu'
-require_relative '../lib/list'
-require_relative '../lib/rhyme'
-require_relative '../lib/rhymebrain'
-require_relative '../lib/portmanteau'
