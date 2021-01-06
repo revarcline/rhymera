@@ -73,7 +73,7 @@ alternative (spelling[1] if spelling[1])
 - do i make everything extend it so i can call it from other stuff?
 
 ### Menu
-- handles choices, relies on `CLI::UI`
+- handles choices, relies on `TTY::Prompt`
 - send word to clipboard with `Clipboard`
 - displays `List` object as selectable menu
     - also: search new word/previous search/search {other type}
