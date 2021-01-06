@@ -8,5 +8,9 @@ prompt.yes?('is this working?')
 prompt.select('Select a result for more info',
               port_list.entries.map(&:word))
 
-prompt.select('Select a result for more info',
-              port_list.entries.map { |entry| { entry.word.to_s => entry } })
+object = prompt.select('Select a result for more info',
+                       port_list.entries.map { |entry| { entry.word.to_s => entry } })
+
+object.instance_variables.first.to_s.gsub('@', '')
+
+object.source_one
