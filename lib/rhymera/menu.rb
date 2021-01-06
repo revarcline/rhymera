@@ -56,6 +56,7 @@ module Rhymera
         menu << { "#{arg.capitalize}: #{word}" => word }
       end
       opts = prompt.select("More details on #{@word}:", menu)
+
       @word = opts
       prompt.select("More details on #{@word}:", extra_menu_entries)
     end

@@ -6,6 +6,7 @@ module Rhymera
 
     @all = []
 
+    # using class instance variable instead of class variable per rubocop
     class << self
       attr_accessor :all
     end

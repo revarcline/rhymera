@@ -1,8 +1,6 @@
 # Rhymera
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rhymera`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Rhymera is a CLI gem to search the [RhymeBrain](https://rhymebrain.com) API for rhymes and portmanteaus of a given query. Menus give you the option to start a new search with the result, look through previous searches, or copy a result to the clipboard.
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Execute `rhymera`. After searching a query and choosing which type of search to conduct, you can find more information about each result in the menus.
 
 ## Development
 
@@ -32,4 +30,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rhymera.
+Bug reports and pull requests are welcome on GitHub at https://github.com/revarcline/rhymera.
+
+## License
+
+Licensed under GPL 3.0, See LICENSE for details.
