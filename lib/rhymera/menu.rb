@@ -40,7 +40,12 @@ module Rhymera
       results << @list.entries.map { |ent| { ent.word.to_s => ent } }
       result = prompt.select("#{@function} for '#{@word}' and other options:", results)
 
-      @word = result.word
+      @word = if result.instance_of?(Rhymera::Rhyme) ||
+                 result.instance_of?(Rhymera::Portmanteau)
+                result.word
+              else
+                result
+              end
       detail_view(result)
     end
 
