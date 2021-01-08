@@ -9,17 +9,20 @@ module Rhymera
 
     def initialize
       @prompt = TTY::Prompt.new
+      # print once on intialization
       puts 'Welcome to Rhymera.'
     end
 
     def call
       @word = prompt.ask("Please enter a search term or :q to quit.\n>")
       call if @word == ''
+      # vim-style quit, seems best
       exit(0) if @word == ':q'
       search(@word)
     end
 
     def search(term)
+      # can be called again and again!
       @word = term
       @function = search_type
       @list = Rhymera::List.new(word: @word, function: "get#{@function}")
@@ -32,6 +35,7 @@ module Rhymera
     end
 
     def display_results
+      # can be called both by search and previous entries
       results = extra_menu_entries
       results << @list.entries.map { |ent| { ent.word.to_s => ent } }
       result = prompt.select("#{@function} for '#{@word}' and other options:", results)
@@ -41,6 +45,7 @@ module Rhymera
     end
 
     def extra_menu_entries
+      # options leading to lambas! we love lambdas, don't we folks
       [{ "Copy '#{@word}' to Clipboard" => -> { Clipboard.copy(@word) } },
        { "Search '#{@word}'" => -> { search(@word) } },
        { 'New Search' => -> { call } },
@@ -50,6 +55,7 @@ module Rhymera
 
     def detail_view(object)
       menu = extra_menu_entries
+      # iterate through attrs of a given Rhyme or Portmanteau for display
       object.instance_variables.each do |var|
         arg = var.to_s.gsub('@', '')
         word = object.send(arg)
@@ -62,6 +68,7 @@ module Rhymera
     end
 
     def old_searches
+      # here's one of the ol' class methods
       lists = Rhymera::List.all.map do |list|
         { "#{list.type[3..]} for #{list.query}" => list }
       end

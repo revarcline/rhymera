@@ -29,3 +29,5 @@ Rhymera::List.all.first.entries.first.word
 
 Rhymera::List.all.first.query
 Rhymera::List.all.first.type[3..]
+
+ curl -u revarcline https://rubygems.org/api/v1/api_key.yaml > ~/.gem/credentials; chmod 0600 ~/.gem/credentials
