@@ -18,7 +18,7 @@ module Rhymera
       @entries = []
       build_correct_type
 
-      # add to all hash
+      # add to all array
       self.class.all << self
     end
 
