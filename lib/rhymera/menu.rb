@@ -69,7 +69,7 @@ module Rhymera
       opts = prompt.select("More details on #{@word}:", menu)
 
       @word = opts
-      prompt.select("More details on #{@word}:", extra_menu_entries)
+      prompt.select("More details on #{@word}:", extra_menu_entries) while @word == opts
     end
 
     def old_searches
