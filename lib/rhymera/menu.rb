@@ -15,7 +15,7 @@ module Rhymera
 
     def call
       @word = prompt.ask("Please enter a search term or :q to quit.\n>")
-      call if @word == ''
+      call if @word.nil?
       # vim-style quit, seems best
       exit(0) if @word == ':q'
       search(@word)
